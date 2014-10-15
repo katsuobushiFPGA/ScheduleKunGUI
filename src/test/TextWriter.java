@@ -7,6 +7,7 @@ import java.io.OutputStreamWriter;
 public class TextWriter {
 	private String onsei;
 	private String matrix;
+
 	public void setOnsei(String text){
 		onsei = text;
 	}
@@ -22,6 +23,9 @@ public class TextWriter {
 		// OutputStreamWriterオブジェクト生成（文字コードの指定）
 		OutputStreamWriter oall = new OutputStreamWriter(f, code);
 		oall.write(onsei);
+		oall.write("\r\n");
 		oall.write(matrix);
+		oall.close();
+		f.close();
 	}
 }

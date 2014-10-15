@@ -1,14 +1,36 @@
 package test;
 
+
 public class Main {
 	public static void main(String args[]) throws Throwable{
-		System.out.println("Hello");
+		/* 必要なオブジェクトの生成 */
+		final KanaRomaji k = new KanaRomaji();
+		DotMatrix x = new DotMatrix();
+		OnseiGengo on = new OnseiGengo();
 		TextWriter t = new TextWriter();
-		final DotMatrix x = new DotMatrix();
+
+		/* ファイルパス */
+		final String outputPath = "D:\\jaavtest";
+		String filename = "test.txt";
+		StringBuilder connecter=new StringBuilder();
+		connecter.append(outputPath).append("\\").append(filename);
+		System.out.println(connecter.toString());
+
+		/* ユーザー文字入力 */
+		final String userInput = "あいうえお";
+
+
+
+		System.out.println(k.kana2roma(on.onseiString("おはようございます。")));
+		System.out.println("Hello");
+
 		System.out.println(x.toString("こんにちは"));
-		t.setMatrix("てｓ");
-		t.setOnsei("てｓ");
-		
-		t.TextOutput("C:\\Users\\hiroto\\Documents\\NetBeansProjects", "SJIS");
+
+
+		/* 必要処理 */
+
+		t.setMatrix("#Matrix:" + x.toString(userInput));
+		t.setOnsei("#Onsei:" + k.kana2roma(on.onseiString(userInput)));
+		t.TextOutput(connecter.toString(), "SJIS");
 	}
 }

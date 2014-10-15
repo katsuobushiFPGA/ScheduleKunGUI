@@ -1,37 +1,23 @@
 package test;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 class DotMatrix {
-	/** Œã‚ë‚É‹ô”ŒÂ‚Ìu"v‚ªŒ»‚ê‚éu,v‚Éƒ}ƒbƒ`‚·‚é³‹K•\Œ» */
+	/** ï¿½ï¿½ï¿½É‹ï¿½ï¿½ï¿½ï¿½Â‚Ìu"ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½u,ï¿½vï¿½Éƒ}ï¿½bï¿½`ï¿½ï¿½ï¿½é³ï¿½Kï¿½\ï¿½ï¿½ */
     static final String REGEX_CSV_COMMA = ",(?=(([^\"]*\"){2})*[^\"]*$)";
-    /** Å‰‚ÆÅŒã‚Ìu"v‚Éƒ}ƒbƒ`‚·‚é³‹K•\Œ»*/
+    /** ï¿½Åï¿½ï¿½ÆÅŒï¿½Ìu"ï¿½vï¿½Éƒ}ï¿½bï¿½`ï¿½ï¿½ï¿½é³ï¿½Kï¿½\ï¿½ï¿½*/
     static final String REGEX_SURROUND_DOUBLEQUATATION = "^\"|\"$";
-    /** u""v‚Éƒ}ƒbƒ`‚·‚é³‹K•\Œ» */
+    /** ï¿½u""ï¿½vï¿½Éƒ}ï¿½bï¿½`ï¿½ï¿½ï¿½é³ï¿½Kï¿½\ï¿½ï¿½ */
     static final String REGEX_DOUBLEQUOATATION = "\"\"";
-    
+
 	private static HashMap<String,String> hm = new HashMap<>();
 	public DotMatrix() throws Throwable{
 		readCSV();
 	}
-    //ŠO•”—p
+    //ï¿½Oï¿½ï¿½ï¿½p
     private static String pickUpChar(String key) throws Throwable{
     	return hm.get(key);
     }
@@ -39,30 +25,31 @@ class DotMatrix {
     	StringBuilder sb = new StringBuilder();
     	for(int i=0;i<s.length();i++){
     		sb.append(DotMatrix.pickUpChar( String.valueOf(s.charAt(i)) ));
-    		sb.append("\n");
+    		if(i!=s.length()-1)sb.append(",");
     	}
     	return sb.toString();
     }
-	public String toString(String s) throws Throwable{
+
+    public String toString(String s) throws Throwable{
 		return userString(s);
 	}
 	private static void readCSV() throws Throwable{
     	BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("FONT.csv"),"SJIS"));
         String s;
-        // ƒtƒ@ƒCƒ‹‚ğs’PˆÊ‚Å“Ç‚Ş
+        // ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½sï¿½Pï¿½Ê‚Å“Ç‚ï¿½
         while( (s = br.readLine()) != null ) {
-            // ³‹K•\Œ»‚Å•ªŠ„‚·‚é
+            // ï¿½ï¿½ï¿½Kï¿½\ï¿½ï¿½ï¿½Å•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             String[] array = splitLineWithComma(s);
             hm.put(array[0],array[1]);
         }
         br.close();
     }
     private static String[] splitLineWithComma(String line) {
-        // •ªŠ„Œã‚Ì•¶š—ñ”z—ñ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½zï¿½ï¿½
         String[] arr = null;
 
         try {
-            // ‚PAu"v‚ÅˆÍ‚Ü‚ê‚Ä‚¢‚È‚¢u,v‚Ås‚ğ•ªŠ„‚·‚éB
+            // ï¿½Pï¿½Aï¿½u"ï¿½vï¿½ÅˆÍ‚Ü‚ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½u,ï¿½vï¿½Åsï¿½ğ•ªŠï¿½ï¿½ï¿½ï¿½ï¿½B
             Pattern cPattern = Pattern.compile(REGEX_CSV_COMMA);
             String[] cols = cPattern.split(line, -1);
 
@@ -70,13 +57,13 @@ class DotMatrix {
             for (int i = 0, len = cols.length; i < len; i++) {
                 String col = cols[i].trim();
 
-                // ‚QAÅ‰‚ÆÅŒã‚Éu"v‚ª‚ ‚ê‚Îíœ‚·‚éB
+                // ï¿½Qï¿½Aï¿½Åï¿½ï¿½ÆÅŒï¿½Éu"ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îíœï¿½ï¿½ï¿½ï¿½B
                 Pattern sdqPattern =
                     Pattern.compile(REGEX_SURROUND_DOUBLEQUATATION);
                 Matcher matcher = sdqPattern.matcher(col);
                 col = matcher.replaceAll("");
 
-                // ‚RAƒGƒXƒP[ƒv‚³‚ê‚½u"v‚ğ–ß‚·B
+                // ï¿½Rï¿½Aï¿½Gï¿½Xï¿½Pï¿½[ï¿½vï¿½ï¿½ï¿½ê‚½ï¿½u"ï¿½vï¿½ï¿½ß‚ï¿½ï¿½B
                 Pattern dqPattern =
                     Pattern.compile(REGEX_DOUBLEQUOATATION);
                 matcher = dqPattern.matcher(col);
