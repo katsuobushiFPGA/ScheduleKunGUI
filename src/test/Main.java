@@ -1,8 +1,12 @@
 package test;
 
+import javafx.application.Application;
+
 
 public class Main {
 	public static void main(String args[]) throws Throwable{
+
+
 		/* 必要なオブジェクトの生成 */
 		final KanaRomaji k = new KanaRomaji();
 		DotMatrix x = new DotMatrix();
@@ -27,10 +31,15 @@ public class Main {
 		System.out.println(x.toString("こんにちは"));
 
 
+
 		/* 必要処理 */
 
 		t.setMatrix("#Matrix:" + x.toString(userInput));
 		t.setOnsei("#Onsei:" + k.kana2roma(on.onseiString(userInput)));
 		t.TextOutput(connecter.toString(), "SJIS");
+
+
+
+		Application.launch(Window.class);
 	}
 }

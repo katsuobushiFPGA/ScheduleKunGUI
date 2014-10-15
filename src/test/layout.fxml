@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<Pane prefWidth="400" prefHeight="600" xmlns:fx="http://javafx.com/fxml">
+	<VBox>
+		<children>
+			<Label text="Hello, JavaFX!" layoutX= "16" layoutY="32"/>
+		</children>
+	</VBox>
+</Pane>
