@@ -11,7 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 public class WindowController implements Initializable {
 	private List<Integer> list_t = new ArrayList<>();//time
@@ -56,8 +55,6 @@ public class WindowController implements Initializable {
     private TextField schedule5_t;
     @FXML
     private TextField schedule6_t;
-    @FXML
-    private Text usage;
 
     @FXML
     private Button generate;
