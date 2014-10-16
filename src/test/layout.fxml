@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane fx:controller="test.WindowController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane prefHeight="400.0" prefWidth="606.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -19,12 +20,12 @@
                      <children>
                         <Pane layoutX="69.0" layoutY="38.0" prefHeight="319.0" prefWidth="494.0">
                            <children>
-                              <TextField layoutX="228.0" layoutY="34.0" prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.1" />
-                              <TextField layoutX="228.0" layoutY="78.0" prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.2" />
-                              <TextField layoutX="228.0" layoutY="124.0" prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.3" />
-                              <TextField layoutX="228.0" layoutY="167.0" prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.4" />
-                              <TextField layoutX="228.0" layoutY="212.0" prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.5" />
-                              <TextField layoutX="228.0" layoutY="253.0" prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.6" />
+                              <TextField fx:id="schedule1_t" layoutX="228.0" layoutY="34.0"  prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.1" />
+                              <TextField fx:id="schedule2_t" layoutX="228.0" layoutY="78.0"  prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.2" />
+                              <TextField fx:id="schedule3_t" layoutX="228.0" layoutY="124.0" prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.3" />
+                              <TextField fx:id="schedule4_t" layoutX="228.0" layoutY="167.0" prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.4" />
+                              <TextField fx:id="schedule5_t" layoutX="228.0" layoutY="212.0" prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.5" />
+                              <TextField fx:id="schedule6_t" layoutX="228.0" layoutY="253.0" prefHeight="25.0" prefWidth="199.0" promptText="write the schedule here. No.6" />
                               <Text layoutX="113.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" />
                               <Text layoutX="287.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Schedule's contents" />
 
@@ -58,7 +59,8 @@
 						                </FXCollections>
 						            </items>
 						        </ComboBox>
-                              <Button layoutX="153.0" layoutY="293.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Generate" />
+                              <Button fx:id="generate" layoutX="153.0" layoutY="293.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Generate" onAction="#onClick"/>
+
                               <ComboBox fx:id="schedule1_m" layoutX="142.0" layoutY="34.0" prefHeight="25.0" prefWidth="58.0" promptText="0">
 						            <items>
 						                <FXCollections fx:factory="observableArrayList">
@@ -649,12 +651,7 @@
           <Tab text="help">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               <Text layoutX="171.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usage">
-                   <font>
-                       <Font size="18.0" />
-                   </font>
-               </Text>
-               <Text layoutX="171.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="a">
+               <Text fx:id="usage" layoutX="171.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usage">
                    <font>
                        <Font size="18.0" />
                    </font>
